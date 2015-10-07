@@ -1,20 +1,22 @@
 ## Profiling your code in Python
 
 ### Instructional design thoughts:
-* Get it right first, then make it fast(er). 
- 
+* Consider changing the title to "Understanding the Performance of your Software" - the word performance is possibly better understood by the interested lay people than the word profiling
+
+* Get it right first, then make it fast(er).
+
 Students should already have covered test-driven development, which should result in correct code - there is no point in optimising code that doesn't do what you want it to!
 * Do we need to explain why code might run slowly (example)?
 
 Kind of things that might slow down code include:
 
-1. Hitting memory limits 
+1. Hitting memory limits
 2. Accidentally looping through arrays you're already looping through - for example calling a procedure inside a loop to find something, and then having that procedure loop through the array to find it.
 3. Putting low-probability if-statements early in an if-else ladder
 4. Using if-else ladders where a switch/case statement might be better
 5. Calling procedures or using complex if-statements inside very large data loops
 6. Making variables inside loops instead of outside them, so they keep getting recreated.
-7. Reading and writing from the harddrive
+7. Reading and writing from the hard drive (I/O) - explain that CPU are improving speed faster than I/O so this is likley to become a more significant problem over the next few years
 8. Using inefficient objects when an array might be better
 
 * Is it worth explaining that getting the algorithm right first might be a better approach (example)?
@@ -22,6 +24,23 @@ Kind of things that might slow down code include:
 Yes, it should certainly form part of the approach. Two steps before profiling would be to ensure you're getting the right answers, and through the most efficient approach (make coarse adjustments before the fine-tuning). Then go ahead and profile to find bottlenecks. This of course may be an iterative process which informs the best approach/algorithm.
 
 * This lesson will work best if students already modularise their code
+
+### Keywords
+* Profiling
+* Performance
+* Optimise
+* Bottleneck
+
+### Prerequisites
+* Intermediate python (including the use of tests)
+* Having python software that you have previously developed and may need to be optimised - bring your own code?
+
+### Learning objectives
+* Why do I need to profile my code?
+* What impact can I expect on my code?
+* How do I use `line_profiler`?
+* How do I interpret the results?
+* How can I use these results to make my code run faster?
 
 ### Getting ready
 The `line_profiler` module is not installed as part of the base Anaconda Python installation. You will need to use the conda package manager to install this onto your computers.
@@ -33,13 +52,6 @@ At the command prompt, enter:
 If you are using a different Python distribution, the `line_profiler` package can be installed through `pip`:
 
 `pip install line_profiler`
-
-### Learning objectives
-* Why do I need to profile my code?
-* What impact can I expect on my code?
-* How do I use `line_profiler`?
-* How do I interpret the results?
-* How can I use these results to make my code run faster?
 
 #### Why do I need to profile my code?
 
